@@ -3,8 +3,6 @@ package org.sythe.suf.message.command;
 import org.sythe.suf.message.IPermissionedSender;
 import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.argument.IArgument;
-import org.sythe.suf.message.command.argument.InvalidArugmentException;
-import org.sythe.suf.message.command.argument.MissingArgumentsException;
 
 /**
  * @author Jacob A. Leach
@@ -70,9 +68,14 @@ public abstract class AbstractCommand implements ICommand
 				// If everything is all good, run the command
 				runCommand(sender, args);
 			}
+			else
+			{
+				//throw new InsufficientPermissionException("Permission is insufficient: " + permission + " needed.", permission);
+			}
 		}
 		else
 		{
+			//TODO: Implement
 			throw new MissingArgumentsException("Missing arguments... Not fully implemented");
 		}
 	}

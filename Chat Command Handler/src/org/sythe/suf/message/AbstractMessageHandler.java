@@ -1,9 +1,9 @@
 package org.sythe.suf.message;
 
 import org.sythe.suf.message.command.ICommandManager;
+import org.sythe.suf.message.command.InvalidArugmentException;
 import org.sythe.suf.message.command.InvalidNameException;
-import org.sythe.suf.message.command.argument.InvalidArugmentException;
-import org.sythe.suf.message.command.argument.MissingArgumentsException;
+import org.sythe.suf.message.command.MissingArgumentsException;
 
 /**
  * @author Jacob A. Leach

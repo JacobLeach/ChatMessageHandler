@@ -1,5 +1,9 @@
 package org.sythe.suf.message.command.argument;
 
+/**
+ * @author Jacob A. Leach
+ *
+ */
 public class IntegerArugment extends AbstractArgument
 {
 	private static final String INTEGER_TYPE = "Integer";
@@ -9,6 +13,9 @@ public class IntegerArugment extends AbstractArgument
 		super(INTEGER_TYPE);
 	}
 
+	/* (non-Javadoc)
+	 * @see org.sythe.suf.message.command.argument.IArgument#isValid(java.lang.String)
+	 */
 	@Override
 	public boolean isValid(String argument)
 	{
