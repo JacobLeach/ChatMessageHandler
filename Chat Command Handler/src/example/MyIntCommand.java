@@ -4,9 +4,9 @@ import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.*;
 import org.sythe.suf.message.command.argument.IntegerArugment;
 
-public class IntCommand extends AbstractCommand
+public class MyIntCommand extends AbstractCommand
 {
-	public IntCommand()
+	public MyIntCommand()
 	{
 		super(1, 1, new IntegerArugment());
 	}

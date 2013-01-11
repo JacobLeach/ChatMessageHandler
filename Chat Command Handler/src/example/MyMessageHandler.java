@@ -9,7 +9,7 @@ public class MyMessageHandler extends AbstractMessageHandler
 	{
 		super("/", new CommandManager());
 		getCommandManager().addCommand("mycommand", new MyCommand());
-		getCommandManager().addCommand("perm", new IntCommand());
+		getCommandManager().addCommand("perm", new MyIntCommand());
 	}
 	
 	public void onMessage(ITextMessage message)
