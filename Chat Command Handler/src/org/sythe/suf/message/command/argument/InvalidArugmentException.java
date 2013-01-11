@@ -1,4 +1,4 @@
-package org.sythe.suf.message.command;
+package org.sythe.suf.message.command.argument;
 
 public class InvalidArugmentException extends Exception
 {

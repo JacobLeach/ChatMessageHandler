@@ -1,28 +1,27 @@
 package org.sythe.suf.message.command;
+
 import java.util.HashMap;
 
 import org.sythe.suf.message.ISender;
-
+import org.sythe.suf.message.command.argument.InvalidArugmentException;
+import org.sythe.suf.message.command.argument.MissingArgumentsException;
 
 /**
  * @author Jacob A. Leach
  * @version 1.0
- * @since	1.0
+ * @since 1.0
  */
 public class CommandManager implements ICommandManager
 {
 	private HashMap<String, ICommand> iCommands = new HashMap<String, ICommand>();
 
-	/**
-	 * Adds a command to the CommandManager. Will replace a command with the same name and will
-	 * return true. Will return false if there is not a command with the same name.
+	/*
+	 * (non-Javadoc)
 	 * 
-	 * @param commandName
-	 *            the name of the command
-	 * @param iCommand
-	 *            the command object
-	 * @return true if a command of commandName already existed and was replaced and false otherwise
+	 * @see org.sythe.suf.message.command.ICommandManager#addCommand(java.lang.String,
+	 * org.sythe.suf.message.command.ICommand)
 	 */
+	@Override
 	public final boolean addCommand(String commandName, ICommand iCommand)
 	{
 		boolean replaced = iCommands.containsKey(commandName);
@@ -31,21 +30,17 @@ public class CommandManager implements ICommandManager
 		return replaced;
 	}
 
-	/**
-	 * Parses and executes a command. The command should come in as a String with the command name
-	 * first, follow by the optional arugments with all seperated by spaces.
+	/*
+	 * This method is patched together at the moment.
+	 * TODO: Rewrite method without it being crap
 	 * 
-	 * @param iSender
-	 *            The sender of the command
-	 * @param command
-	 *            The unparsed command string with the command name and optional arugments
-	 *            seperted with spaces
-	 * @return an object (or null) that the command returns when finished executing
-	 * @throws InvalidNameException
-	 *             If there is no command of the name given (through the full command string)
-	 * @throws InvalidArugmentException 
+	 * (non-Javadoc)
+	 * 
+	 * @see org.sythe.suf.message.command.ICommandManager#executeCommand(org.sythe.suf.message.ISender,
+	 * java.lang.String)
 	 */
-	public final void executeCommand(ISender iSender, String command) throws InvalidNameException, InvalidArugmentException
+	@Override
+	public final void executeCommand(ISender iSender, String command) throws InvalidNameException, InvalidArugmentException, MissingArgumentsException
 	{
 		String commandName;
 
@@ -58,6 +53,13 @@ public class CommandManager implements ICommandManager
 		{
 			// There are no spaces so the entire command is the commandName
 			commandName = command;
+			commandName = commandName.toLowerCase();
+			if (!iCommands.containsKey(commandName))
+			{
+				throw new InvalidNameException("There is no command named \"" + commandName + "\".", commandName);
+			}
+			iCommands.get(commandName).execute(iSender, new String[0]);
+			return;
 		}
 
 		commandName = commandName.toLowerCase();
@@ -68,7 +70,7 @@ public class CommandManager implements ICommandManager
 		}
 		else
 		{
-			String[] args = command.substring(0, command.indexOf(' ')).split("[ ]");
+			String[] args = command.substring(command.indexOf(' ') + 1).split("[ ]");
 			iCommands.get(commandName).execute(iSender, args);
 		}
 	}

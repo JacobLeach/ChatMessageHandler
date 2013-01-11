@@ -1,6 +1,5 @@
 package org.sythe.suf.message.command.argument;
 
-import org.sythe.suf.message.command.InvalidArugmentException;
 
 /**
  * @author Jacob A. Leach
