@@ -4,6 +4,12 @@ import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.AbstractCommand;
 import org.sythe.suf.message.command.parameter.StringParameter;
 
+/**
+ * TODO: CURRENTLY BROKEN. Fix
+ * 
+ * @author Jacob A. Leach
+ *
+ */
 public class MyCommand extends AbstractCommand
 {
 

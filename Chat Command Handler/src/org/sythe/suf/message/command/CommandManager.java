@@ -6,6 +6,8 @@ import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.error.IErrorHandler;
 
 /**
+ * TODO: Implement error handling within this class
+ * 
  * @author Jacob A. Leach
  * @version 1.0
  * @since 1.0
@@ -14,7 +16,12 @@ public class CommandManager implements ICommandManager
 {
 	private HashMap<String, ICommand> iCommands = new HashMap<String, ICommand>();
 	private IErrorHandler errorHandler;
-
+	
+	public CommandManager(IErrorHandler errorHandler)
+	{
+		this.errorHandler = errorHandler;
+	}
+	
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -56,7 +63,7 @@ public class CommandManager implements ICommandManager
 			commandName = commandName.toLowerCase();
 			if (!iCommands.containsKey(commandName))
 			{
-				
+				errorHandler.onNameError(commandName);
 			}
 			iCommands.get(commandName).run(iSender, new String[0]);
 			return;
@@ -66,7 +73,7 @@ public class CommandManager implements ICommandManager
 
 		if (!iCommands.containsKey(commandName))
 		{
-			
+			errorHandler.onNameError(commandName);
 		}
 		else
 		{

@@ -1,9 +1,6 @@
 package org.sythe.suf.message;
 
 import org.sythe.suf.message.command.ICommandManager;
-import org.sythe.suf.message.command.InvalidArugmentException;
-import org.sythe.suf.message.command.InvalidNameException;
-import org.sythe.suf.message.command.MissingArgumentsException;
 
 /**
  * @author Jacob A. Leach
@@ -37,12 +34,6 @@ public abstract class AbstractCommandMessageHandler extends AbstractMessageHandl
 		}
 	}
 
-	/**
-	 * @param message
-	 * @throws InvalidNameException
-	 * @throws InvalidArugmentException
-	 * @throws MissingArgumentsException
-	 */
 	private final void onCommand(ITextMessage message)
 	{
 		commandManager.handleCommand(message.getSender(), message.getMessageText().substring(commandString.length()));

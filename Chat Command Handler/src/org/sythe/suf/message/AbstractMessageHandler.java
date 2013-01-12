@@ -1,5 +1,9 @@
 package org.sythe.suf.message;
 
+/**
+ * @author Jacob A. Leach
+ *
+ */
 public abstract class AbstractMessageHandler implements IMessageHandler
 {
 	@Override

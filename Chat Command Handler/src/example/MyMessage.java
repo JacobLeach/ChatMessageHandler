@@ -2,6 +2,12 @@ package example;
 
 import org.sythe.suf.message.*;
 
+/**
+ * TODO: CURRENTLY BROKEN. Fix
+ * 
+ * @author Jacob A. Leach
+ *
+ */
 public class MyMessage implements ITextMessage
 {
 	private String messageText;

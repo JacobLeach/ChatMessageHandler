@@ -7,11 +7,15 @@ package org.sythe.suf.message;
 public interface ITextMessage
 {
 	/**
+	 * TODO: Write comment
+	 * 
 	 * @return
 	 */
 	public String getMessageText();
 	
 	/**
+	 * TODO: Write comment
+	 * 
 	 * @return
 	 */
 	public ISender getSender();

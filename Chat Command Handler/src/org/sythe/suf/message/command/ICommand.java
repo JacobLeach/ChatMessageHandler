@@ -17,17 +17,23 @@ public interface ICommand
 	public void run(ISender sender, String[] args);
 
 	/**
-	 * @param args
+	 * @param argumentNumber the number of arguments to check
+	 * @return true if there is no problems with the argument number, false if there is
 	 */
 	public boolean checkArgumentNumber(int argumentNumber);
 
 	/**
-	 * @param args
+	 * @param args the arguments to check
+	 * @return null if there is no errors with the parameters or the type of argument required as a String if there is
+	 *         an error
 	 */
-	public String checkArgumentTypes(String[] args);
+	public String checkParameterTypes(String[] args);
 
 	/**
-	 * @param permission
+	 * @param sender
+	 *            the sender of the command
+	 * @return true if the sender has permission to use the command and false if the sender does not have permission to
+	 *         use the command
 	 */
 	public boolean checkPermission(ISender sender);
 

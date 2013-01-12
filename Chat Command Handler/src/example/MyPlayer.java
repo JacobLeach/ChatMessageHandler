@@ -2,6 +2,12 @@ package example;
 
 import org.sythe.suf.message.IPermissionedSender;
 
+/**
+ * TODO: CURRENTLY BROKEN. Fix
+ * 
+ * @author Jacob A. Leach
+ *
+ */
 public class MyPlayer implements IPermissionedSender
 {
 	private String name;

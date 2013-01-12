@@ -3,6 +3,12 @@ package example;
 import org.sythe.suf.message.*;
 import org.sythe.suf.message.command.CommandManager;
 
+/**
+ * TODO: CURRENTLY BROKEN. Fix
+ * 
+ * @author Jacob A. Leach
+ *
+ */
 public class MyMessageHandler extends AbstractCommandMessageHandler
 {
 	public MyMessageHandler()

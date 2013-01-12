@@ -4,6 +4,12 @@ import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.*;
 import org.sythe.suf.message.command.parameter.IntegerParameter;
 
+/**
+ * TODO: CURRENTLY BROKEN. Fix
+ * 
+ * @author Jacob A. Leach
+ *
+ */
 public class MyIntCommand extends AbstractCommand
 {
 	public MyIntCommand()
