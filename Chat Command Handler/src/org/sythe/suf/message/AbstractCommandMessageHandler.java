@@ -24,13 +24,15 @@ public abstract class AbstractCommandMessageHandler extends AbstractMessageHandl
 	@Override
 	public final void handleMessage(ITextMessage message)
 	{
+		//TODO: Implement being able to send commands as messages as well as doing the command
+		onMessage(message);
 		if (commandString != null && message.getMessageText().startsWith(commandString))
 		{
 			onCommand(message);
 		}
 		else
 		{
-			onMessage(message);
+			
 		}
 	}
 

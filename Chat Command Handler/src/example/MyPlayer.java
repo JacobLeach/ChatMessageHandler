@@ -1,6 +1,8 @@
 package example;
 
-import org.sythe.suf.message.IPermissionedSender;
+import org.sythe.suf.message.ISender;
+import org.sythe.suf.message.command.permission.IPermission;
+import org.sythe.suf.message.command.permission.IntegerPermission;
 
 /**
  * TODO: CURRENTLY BROKEN. Fix
@@ -8,26 +10,26 @@ import org.sythe.suf.message.IPermissionedSender;
  * @author Jacob A. Leach
  *
  */
-public class MyPlayer implements IPermissionedSender
+public class MyPlayer implements ISender
 {
 	private String name;
-	private int permission;
+	private IntegerPermission permission;
 	
 	public MyPlayer(String name, int permission)
 	{
 		this.name = name;
-		this.permission = permission;
+		this.permission = new IntegerPermission(permission);
 	}
 
 	@Override
-	public int getPermission()
+	public IntegerPermission getPermission()
 	{
 		return permission;
 	}
 	
 	public void setPermission(int permission)
 	{
-		this.permission = permission;
+		this.permission = new IntegerPermission(permission);
 	}
 	
 	public String getName()
@@ -40,9 +42,12 @@ public class MyPlayer implements IPermissionedSender
 		this.name = name;
 	}
 	
-	public void sendPrivateMessage(String message)
+	@Override
+	public void sendMessage(String message)
 	{
 		//This is pretending the console is how you send a private message to a player
 		System.out.println(message);
 	}
+	
+	
 }

@@ -20,7 +20,7 @@ public abstract class AbstractCommand implements ICommand
 {
 	private IPermission permission;
 
-	private final int requiredArguments;
+	private final int requiredParameters;
 	private final IParameter[] parameters;
 
 	// TODO: Write a IntegerPermission Class to use here
@@ -40,7 +40,7 @@ public abstract class AbstractCommand implements ICommand
 	public AbstractCommand(IPermission permission, int requiredArguments, IParameter... arguments)
 	{
 		this.permission = permission;
-		this.requiredArguments = requiredArguments;
+		this.requiredParameters = requiredArguments;
 		this.parameters = arguments;
 	}
 
@@ -72,7 +72,7 @@ public abstract class AbstractCommand implements ICommand
 	@Override
 	public final boolean checkArgumentNumber(int argumentNumber)
 	{
-		return argumentNumber >= requiredArguments;
+		return argumentNumber >= requiredParameters;
 	}
 
 	/*
@@ -91,25 +91,42 @@ public abstract class AbstractCommand implements ICommand
 	 * 
 	 * @see org.sythe.suf.message.command.ICommand#checkParameterTypes(java.lang.String[])
 	 */
-	public String checkParameterTypes(String[] args)
+	public String checkParameterTypes(String parameter, int position)
 	{
-		/*
-		 * Check all the arugments to make sure they are the correct type.
-		 * Compare i to both args.length and arguments.length because of optional arguments and not checking for
-		 * too
-		 * many arguments.
-		 * 
-		 * If there is an invalid argument, return the String representation of the required type.
-		 */
-		for (int i = 0; (i < args.length) && (i < parameters.length); i++)
+		//TODO: Maybe add array index checking and add a custom error
+		if (!(parameters[position].isValid(parameter)))
 		{
-			if (!(parameters[i].isValid(args[i])))
-			{
-				return parameters[i].getType();
-			}
+			return parameters[position].getType();
 		}
 
 		return null;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.sythe.suf.message.command.ICommand#getTotalParameters()
+	 */
+	@Override
+	public int getTotalParameters()
+	{
+		return parameters.length;
+	}
+
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see org.sythe.suf.message.command.ICommand#getRequiredParameters()
+	 */
+	@Override
+	public int getRequiredParameters()
+	{
+		return requiredParameters;
+	}
+
+	public IPermission getPermission()
+	{
+		return (IPermission) permission.clone();
 	}
 
 	/*
@@ -125,18 +142,7 @@ public abstract class AbstractCommand implements ICommand
 	/*
 	 * ************************************** Getter Methods **************************************
 	 */
-	
-	/**
-	 * TODO: Write comment
-	 * 
-	 * @return
-	 */
-	public final IPermission getPermission()
-	{
-		return permission;
-	}
 
-	
 	/**
 	 * TODO: Write comment
 	 * 
@@ -144,7 +150,7 @@ public abstract class AbstractCommand implements ICommand
 	 */
 	public final int getRequireArguments()
 	{
-		return requiredArguments;
+		return requiredParameters;
 	}
 
 	/*

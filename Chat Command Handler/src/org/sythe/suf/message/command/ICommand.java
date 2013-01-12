@@ -2,6 +2,7 @@ package org.sythe.suf.message.command;
 
 import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.error.IErrorHandler;
+import org.sythe.suf.message.command.permission.IPermission;
 
 /**
  * @author Jacob A. Leach
@@ -10,6 +11,29 @@ import org.sythe.suf.message.command.error.IErrorHandler;
 public interface ICommand
 {
 	/**
+	 * TODO: Write comment
+	 * 
+	 * @return
+	 */
+	public int getTotalParameters();
+	
+	/**
+	 * TODO: Write comment
+	 * 
+	 * @return
+	 */
+	public int getRequiredParameters();
+	
+	/**
+	 * TODO: Write comment
+	 * 
+	 * @return
+	 */
+	public IPermission getPermission();
+	
+	/**
+	 * TODO: Write comment
+	 * 
 	 * @param sender
 	 * @param args
 	 * @return
@@ -23,11 +47,11 @@ public interface ICommand
 	public boolean checkArgumentNumber(int argumentNumber);
 
 	/**
-	 * @param args the arguments to check
-	 * @return null if there is no errors with the parameters or the type of argument required as a String if there is
+	 * @param args the argument to check
+	 * @return null if there is no error with the parameter or the type of argument required as a String if there is
 	 *         an error
 	 */
-	public String checkParameterTypes(String[] args);
+	public String checkParameterTypes(String args, int position);
 
 	/**
 	 * @param sender

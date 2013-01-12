@@ -3,6 +3,7 @@ package example;
 import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.*;
 import org.sythe.suf.message.command.parameter.IntegerParameter;
+import org.sythe.suf.message.command.permission.IntegerPermission;
 
 /**
  * TODO: CURRENTLY BROKEN. Fix
@@ -14,19 +15,18 @@ public class MyIntCommand extends AbstractCommand
 {
 	public MyIntCommand()
 	{
-		super(1, 1, new IntegerParameter());
+		super(new IntegerPermission(1), 1, new IntegerParameter());
 	}
 	
 	@Override
-	public String runCommand(ISender sender, String[] args)
+	public void run(ISender sender, String[] args)
 	{
 		if(sender instanceof MyPlayer)
 		{
 			MyPlayer temp = (MyPlayer) sender;
 			temp.setPermission(Integer.parseInt(args[0]));
-			temp.sendPrivateMessage("Permission changed to: " + args[0]);
+			temp.sendMessage("MyIntCommand: -> Permission changed to: " + args[0]);
 		}
-		return null;
 	}
 
 }

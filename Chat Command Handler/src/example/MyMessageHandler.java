@@ -26,24 +26,4 @@ public class MyMessageHandler extends AbstractCommandMessageHandler
 			System.out.println(temp.getPlayer().getName() + ": " + temp.getMessageText());
 		}
 	}
-
-	@Override
-	public void onInvalidNameException(String invalidCommand)
-	{
-		System.out.println("Invalid command: " + invalidCommand);
-	}
-
-	@Override
-	public void onInvalidArgumentException(String requiredType)
-	{
-		System.out.println("Invalid Argument: " + requiredType + " required.");
-	}
-
-	@Override
-	public void onMissingArgumentsException(String message)
-	{
-		System.out.println(message);
-		
-	}
-
 }

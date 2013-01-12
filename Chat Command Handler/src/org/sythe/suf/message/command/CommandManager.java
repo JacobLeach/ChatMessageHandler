@@ -3,6 +3,7 @@ package org.sythe.suf.message.command;
 import java.util.HashMap;
 
 import org.sythe.suf.message.ISender;
+import org.sythe.suf.message.command.error.ErrorHandler;
 import org.sythe.suf.message.command.error.IErrorHandler;
 
 /**
@@ -16,12 +17,17 @@ public class CommandManager implements ICommandManager
 {
 	private HashMap<String, ICommand> iCommands = new HashMap<String, ICommand>();
 	private IErrorHandler errorHandler;
+
+	public CommandManager()
+	{
+		this(new ErrorHandler());
+	}
 	
 	public CommandManager(IErrorHandler errorHandler)
 	{
 		this.errorHandler = errorHandler;
 	}
-	
+
 	/*
 	 * (non-Javadoc)
 	 * 
@@ -38,47 +44,62 @@ public class CommandManager implements ICommandManager
 	}
 
 	/*
-	 * This method is patched together at the moment.
-	 * TODO: Rewrite method without it being crap
-	 * 
 	 * (non-Javadoc)
 	 * 
 	 * @see org.sythe.suf.message.command.ICommandManager#executeCommand(org.sythe.suf.message.ISender,
 	 * java.lang.String)
 	 */
 	@Override
-	public final void handleCommand(ISender iSender, String command)
+	public final void handleCommand(ISender sender, String commandString)
 	{
-		String commandName;
+		String[] words = commandString.split("[ ]");
+		String commandName = words[0].toLowerCase();
+		String[] arguments = new String[words.length - 1];
 
-		if (command.indexOf(' ') > -1)
+		// Copy the arguments over and leave the command name out
+		System.arraycopy(words, 1, arguments, 0, arguments.length);
+
+		// Don't need words anymore so get rid of it
+		words = null;
+
+		if (iCommands.containsKey(commandName))
 		{
-			// The command name is the first word of the String
-			commandName = command.substring(0, command.indexOf(' '));
-		}
-		else
-		{
-			// There are no spaces so the entire command is the commandName
-			commandName = command;
-			commandName = commandName.toLowerCase();
-			if (!iCommands.containsKey(commandName))
+			ICommand command = iCommands.get(commandName);
+			if (command.checkPermission(sender))
 			{
-				errorHandler.onNameError(commandName);
+				if (command.checkArgumentNumber(arguments.length))
+				{
+					/*
+					 * Check all the arugments to make sure they are the correct type.
+					 * Compare i to both args.length and arguments.length because of optional arguments and not checking
+					 * for too many arguments.
+					 */
+					for (int i = 0; (i < arguments.length) && (i < command.getTotalParameters()); i++)
+					{
+						String value = command.checkParameterTypes(arguments[i], i);
+						if (value != null)
+						{
+							errorHandler.onParameterTypeError(sender, arguments[i], value);
+							// Must return to not run the command after
+							return;
+						}
+					}
+
+					command.run(sender, arguments);
+				}
+				else
+				{
+					errorHandler.onParameterNumberError(sender, arguments.length, command.getRequiredParameters());
+				}
 			}
-			iCommands.get(commandName).run(iSender, new String[0]);
-			return;
-		}
-
-		commandName = commandName.toLowerCase();
-
-		if (!iCommands.containsKey(commandName))
-		{
-			errorHandler.onNameError(commandName);
+			else
+			{
+				errorHandler.onPermissionError(sender, sender.getPermission(), command.getPermission());
+			}
 		}
 		else
 		{
-			String[] args = command.substring(command.indexOf(' ') + 1).split("[ ]");
-			iCommands.get(commandName).run(iSender, args);
+			errorHandler.onNameError(sender, commandName);
 		}
 	}
 }
