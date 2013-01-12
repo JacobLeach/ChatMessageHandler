@@ -3,7 +3,7 @@ package example;
 import org.sythe.suf.message.*;
 import org.sythe.suf.message.command.CommandManager;
 
-public class MyMessageHandler extends AbstractMessageHandler
+public class MyMessageHandler extends AbstractCommandMessageHandler
 {
 	public MyMessageHandler()
 	{

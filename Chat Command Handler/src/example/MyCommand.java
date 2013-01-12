@@ -2,14 +2,14 @@ package example;
 
 import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.AbstractCommand;
-import org.sythe.suf.message.command.argument.StringArgument;
+import org.sythe.suf.message.command.parameter.StringParameter;
 
 public class MyCommand extends AbstractCommand
 {
 
 	public MyCommand()
 	{
-		super(2, 1, new StringArgument());
+		super(2, 1, new StringParameter());
 	}
 
 	@Override

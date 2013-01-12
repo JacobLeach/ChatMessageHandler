@@ -3,6 +3,8 @@ package org.sythe.suf.message.command;
 import org.sythe.suf.message.ISender;
 
 /**
+ * Should implement or contain an IErrorHandler that is used if a command does not specify one.  
+ * 
  * @author Jacob A. Leach
  *
  */
@@ -36,5 +38,5 @@ public interface ICommandManager
 	 * @throws InvalidArugmentException 
 	 * @throws MissingArgumentsException 
 	 */
-	public void executeCommand(ISender iSender, String command) throws InvalidNameException, InvalidArugmentException, MissingArgumentsException;
+	public void handleCommand(ISender iSender, String command);
 }

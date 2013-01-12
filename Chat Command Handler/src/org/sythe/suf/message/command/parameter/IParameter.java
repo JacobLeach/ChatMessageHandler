@@ -1,9 +1,9 @@
-package org.sythe.suf.message.command.argument;
+package org.sythe.suf.message.command.parameter;
 
 /**
  * @author Jacob A. Leach
  */
-public interface IArgument
+public interface IParameter
 {
 	/**
 	 * Returns true if the string passed in is a valid argument. Returns false otherwise.

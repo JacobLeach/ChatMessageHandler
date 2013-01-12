@@ -2,13 +2,13 @@ package example;
 
 import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.*;
-import org.sythe.suf.message.command.argument.IntegerArugment;
+import org.sythe.suf.message.command.parameter.IntegerParameter;
 
 public class MyIntCommand extends AbstractCommand
 {
 	public MyIntCommand()
 	{
-		super(1, 1, new IntegerArugment());
+		super(1, 1, new IntegerParameter());
 	}
 	
 	@Override

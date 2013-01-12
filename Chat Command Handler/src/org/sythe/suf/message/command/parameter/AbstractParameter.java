@@ -1,17 +1,17 @@
-package org.sythe.suf.message.command.argument;
+package org.sythe.suf.message.command.parameter;
 
 /**
  * @author Jacob A. Leach
  *
  */
-public abstract class AbstractArgument implements IArgument
+public abstract class AbstractParameter implements IParameter
 {
 	private final String type;
 	
 	/**
 	 * @param type the string representation of the type of argument
 	 */
-	public AbstractArgument(String type)
+	public AbstractParameter(String type)
 	{
 		this.type = type;
 	}

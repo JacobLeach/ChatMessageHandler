@@ -1,10 +1,10 @@
-package org.sythe.suf.message.command.argument;
+package org.sythe.suf.message.command.parameter;
 
-public class StringArgument extends AbstractArgument
+public class StringParameter extends AbstractParameter
 {
 	private static final String STRING_TYPE = "String";
 
-	public StringArgument()
+	public StringParameter()
 	{
 		super(STRING_TYPE);
 	}

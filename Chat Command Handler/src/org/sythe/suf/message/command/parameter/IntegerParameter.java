@@ -1,14 +1,14 @@
-package org.sythe.suf.message.command.argument;
+package org.sythe.suf.message.command.parameter;
 
 /**
  * @author Jacob A. Leach
  *
  */
-public class IntegerArugment extends AbstractArgument
+public class IntegerParameter extends AbstractParameter
 {
 	private static final String INTEGER_TYPE = "Integer";
 
-	public IntegerArugment()
+	public IntegerParameter()
 	{
 		super(INTEGER_TYPE);
 	}

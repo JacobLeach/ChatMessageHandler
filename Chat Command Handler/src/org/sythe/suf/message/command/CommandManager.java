@@ -3,6 +3,7 @@ package org.sythe.suf.message.command;
 import java.util.HashMap;
 
 import org.sythe.suf.message.ISender;
+import org.sythe.suf.message.command.error.IErrorHandler;
 
 /**
  * @author Jacob A. Leach
@@ -12,6 +13,7 @@ import org.sythe.suf.message.ISender;
 public class CommandManager implements ICommandManager
 {
 	private HashMap<String, ICommand> iCommands = new HashMap<String, ICommand>();
+	private IErrorHandler errorHandler;
 
 	/*
 	 * (non-Javadoc)
@@ -38,7 +40,7 @@ public class CommandManager implements ICommandManager
 	 * java.lang.String)
 	 */
 	@Override
-	public final void executeCommand(ISender iSender, String command) throws InvalidNameException, InvalidArugmentException, MissingArgumentsException
+	public final void handleCommand(ISender iSender, String command)
 	{
 		String commandName;
 
@@ -54,9 +56,9 @@ public class CommandManager implements ICommandManager
 			commandName = commandName.toLowerCase();
 			if (!iCommands.containsKey(commandName))
 			{
-				throw new InvalidNameException("There is no command named \"" + commandName + "\".", commandName);
+				
 			}
-			iCommands.get(commandName).execute(iSender, new String[0]);
+			iCommands.get(commandName).run(iSender, new String[0]);
 			return;
 		}
 
@@ -64,12 +66,12 @@ public class CommandManager implements ICommandManager
 
 		if (!iCommands.containsKey(commandName))
 		{
-			throw new InvalidNameException("There is no command named \"" + commandName + "\".", commandName);
+			
 		}
 		else
 		{
 			String[] args = command.substring(command.indexOf(' ') + 1).split("[ ]");
-			iCommands.get(commandName).execute(iSender, args);
+			iCommands.get(commandName).run(iSender, args);
 		}
 	}
 }

@@ -1,10 +1,12 @@
 package org.sythe.suf.message.command;
 
-import org.sythe.suf.message.IPermissionedSender;
 import org.sythe.suf.message.ISender;
-import org.sythe.suf.message.command.argument.IArgument;
+import org.sythe.suf.message.command.parameter.IParameter;
 
 /**
+ * NOTE: This class is "dumb". It does not do any checking of the permissions / parameters. It is assumed that this is
+ * done BEFORE the command is told to run, most likely by the CommandManager.
+ * 
  * @author Jacob A. Leach
  * 
  */
@@ -13,7 +15,7 @@ public abstract class AbstractCommand implements ICommand
 	private int permission;
 
 	private int requiredArguments;
-	private IArgument[] arguments;
+	private IParameter[] parameters;
 
 	public static final int DEFAULT_PERMISSION = 0;
 	public static final int DEFAULT_REQUIRED_ARGUMENTS = 0;
@@ -21,17 +23,17 @@ public abstract class AbstractCommand implements ICommand
 
 	public AbstractCommand()
 	{
-		this(DEFAULT_PERMISSION, DEFAULT_REQUIRED_ARGUMENTS, new IArgument[DEFAULT_TOTAL_ARGUMENTS]);
+		this(DEFAULT_PERMISSION, DEFAULT_REQUIRED_ARGUMENTS, new IParameter[DEFAULT_TOTAL_ARGUMENTS]);
 	}
 
 	/**
 	 * @param permission
 	 */
-	public AbstractCommand(int permission, int requiredArguments, IArgument... arguments)
+	public AbstractCommand(int permission, int requiredArguments, IParameter... arguments)
 	{
 		this.permission = permission;
 		this.requiredArguments = requiredArguments;
-		this.arguments = arguments;
+		this.parameters = arguments;
 	}
 
 	/*
@@ -44,11 +46,11 @@ public abstract class AbstractCommand implements ICommand
 	 * @see org.sythe.suf.message.command.ICommand#execute(org.sythe.suf.message.ISender, java.lang.String[])
 	 */
 	@Override
-	public final void execute(ISender sender, String[] args) throws InvalidArugmentException, MissingArgumentsException
+	public final void run(ISender sender, String[] args)
 	{
-		if (isEnoughArgs(args))
+		if (checkArgumentNumber(args.length))
 		{
-			if (hasPermission(sender))
+			if (checkPermission(sender))
 			{
 				/*
 				 * Check all the arugments to make sure they are the correct type.
@@ -58,11 +60,12 @@ public abstract class AbstractCommand implements ICommand
 				 * 
 				 * If there is an invalid argument, throw an InvalidArugmentException.
 				 */
-				for (int i = 0; (i < args.length) && (i < arguments.length); i++)
+				for (int i = 0; (i < args.length) && (i < parameters.length); i++)
 				{
-					if (!(arguments[i].isValid(args[i])))
+					if (!(parameters[i].isValid(args[i])))
 					{
-						throw new InvalidArugmentException("Argument is invalid: " + arguments[i].getType() + " expected.", arguments[i].getType());
+						// throw new InvalidArugmentException("Argument is invalid: " + arguments[i].getType() +
+						// " expected.", arguments[i].getType());
 					}
 				}
 				// If everything is all good, run the command
@@ -70,13 +73,14 @@ public abstract class AbstractCommand implements ICommand
 			}
 			else
 			{
-				//throw new InsufficientPermissionException("Permission is insufficient: " + permission + " needed.", permission);
+				// throw new InsufficientPermissionException("Permission is insufficient: " + permission + " needed.",
+				// permission);
 			}
 		}
 		else
 		{
-			//TODO: Implement
-			throw new MissingArgumentsException("Missing arguments... Not fully implemented");
+			// TODO: Implement
+			// throw new MissingArgumentsException("Missing arguments... Not fully implemented");
 		}
 	}
 
@@ -113,27 +117,16 @@ public abstract class AbstractCommand implements ICommand
 	 * ************************************** Helper Methods **************************************
 	 */
 
-	/**
-	 * Called by {@link #execute(ISender, String[]) execute} to ensure we have enough arugments.
-	 * 
-	 * @return true if the number of arugments is valid, false otherwise
-	 */
-	private final boolean isEnoughArgs(String[] args)
+	@Override
+	public final boolean checkArgumentNumber(int argumentNumber)
 	{
-		return args.length >= requiredArguments;
+		return argumentNumber >= requiredArguments;
 	}
 
-	private final boolean hasPermission(ISender sender)
+	@Override
+	public final boolean checkPermission(ISender sender)
 	{
-		if (sender instanceof IPermissionedSender)
-		{
-			IPermissionedSender temp = (IPermissionedSender) sender;
-			return (temp.getPermission() >= this.permission);
-		}
-		else
-		{
-			return true;
-		}
+		return (sender.getPermission() >= this.permission);
 	}
 
 	/*

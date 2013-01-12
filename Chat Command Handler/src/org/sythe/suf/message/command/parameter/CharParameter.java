@@ -1,10 +1,10 @@
-package org.sythe.suf.message.command.argument;
+package org.sythe.suf.message.command.parameter;
 
-public class CharArgument extends AbstractArgument
+public class CharParameter extends AbstractParameter
 {
 	private static final String CHARACTER_TYPE = "Character";
 	
-	public CharArgument()
+	public CharParameter()
 	{
 		super(CHARACTER_TYPE);
 	}
