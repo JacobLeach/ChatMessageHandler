@@ -26,7 +26,7 @@ public class MyCommand extends AbstractCommand
 		{
 			MyPlayer p = (MyPlayer) sender;
 			p.setName(args[0]);
-			p.sendMessage("MyCommand: -> Name changed to: " + args[0]);
+			p.sendMessage("MyCommand : -> Name changed to: " + args[0]);
 		}
 	}
 
