@@ -12,3 +12,5 @@ The example I have is currently broken. I haven't written any unit tests yet but
 Time to break it again.
 
 And again?
+
+Going to be dead soon!
