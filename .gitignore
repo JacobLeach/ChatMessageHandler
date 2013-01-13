@@ -1,1 +1,10 @@
+<<<<<<< HEAD
 /Chat Command Handler
+=======
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+>>>>>>> refs/remotes/origin/master
