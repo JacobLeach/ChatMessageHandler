@@ -7,6 +7,4 @@ My hope for this project is for it to be an easily used framework to handle chat
 
 However, I would also like it to be easily customizable. 
 
-The example I have is currently broken. I haven't written any unit tests yet but I hope to at some point. 
-
-This is a test.
+The example I have is currently broken. I haven't written any unit tests yet but I hope to at some point.
