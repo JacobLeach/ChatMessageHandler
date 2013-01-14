@@ -1,20 +1,15 @@
 Chat-Command-Handler
 ====================
 
-A system to handle chat commands ("/someCommand" or "!command") for any chat program.
+A framework to handle chat commands such as "/someCommand" or "!command" for basically any chat program.
 
-My hope for this project is for it to be an easily used framework to handle chat commands with minimal effort. 
+Some ready to use classes are included but the main focus of this project was to design the framework in such a way so that it would be easy to swap out certain parts of the implmentations provided with custom ones. 
 
-However, I would also like it to be easily customizable. 
+Some of the things I wish to accomplish are:
 
-The example I have is currently broken. I haven't written any unit tests yet but I hope to at some point.
-
-Time to break it again.
-
-And again?
-
-Really trying to break it this time.
-
-From Local
-
-From Github111
+1) Provide various useable implementations for all the abstract classes
+2) More documentation
+3) Full example (Perhaps a simple IRC bot)
+4) Automatic command loading (all your commands would go into a folder and they would be loaded automatically)
+5) More advanced permissions system
+6) Anything else I haven't thought of yet
