@@ -6,15 +6,13 @@ import org.sythe.suf.message.command.parameter.StringParameter;
 import org.sythe.suf.message.command.permission.IntegerPermission;
 
 /**
- * TODO: CURRENTLY BROKEN. Fix
- * 
  * @author Jacob A. Leach
  *
  */
-public class MyCommand extends AbstractCommand
+public class Command extends AbstractCommand
 {
 
-	public MyCommand()
+	public Command()
 	{
 		super(new IntegerPermission(2), 1, new StringParameter());
 	}
@@ -22,9 +20,9 @@ public class MyCommand extends AbstractCommand
 	@Override
 	public void run(ISender sender, String[] args)
 	{
-		if (sender instanceof MyPlayer)
+		if (sender instanceof Player)
 		{
-			MyPlayer p = (MyPlayer) sender;
+			Player p = (Player) sender;
 			p.setName(args[0]);
 			p.sendMessage("MyCommand: -> Name changed to: " + args[0]);
 		}

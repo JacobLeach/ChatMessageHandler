@@ -7,8 +7,6 @@ import org.sythe.suf.message.command.error.ErrorHandler;
 import org.sythe.suf.message.command.error.IErrorHandler;
 
 /**
- * TODO: Implement error handling within this class
- * 
  * @author Jacob A. Leach
  * @version 1.0
  * @since 1.0

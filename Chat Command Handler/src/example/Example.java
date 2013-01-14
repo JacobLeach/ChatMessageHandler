@@ -4,13 +4,13 @@ public class Example
 {
 	public static void main(String[] args)
 	{
-		MyMessageHandler handler = new MyMessageHandler();
-		MyPlayer player = new MyPlayer("Jacob", 10);
-		handler.handleMessage(new MyMessage(player, "Hey this is a simulation of me saying something."));
-		handler.handleMessage(new MyMessage(player, "/mycommand Test"));
-		handler.handleMessage(new MyMessage(player, "Hey this is a simulation of me saying something again!"));
-		handler.handleMessage(new MyMessage(player, "/perm Test"));
-		handler.handleMessage(new MyMessage(player, "/perm 3"));
+		MessageHandler handler = new MessageHandler();
+		Player player = new Player("Jacob", 10);
+		handler.handleMessage(new Message(player, "Hey this is a simulation of me saying something."));
+		handler.handleMessage(new Message(player, "/mycommand Test"));
+		handler.handleMessage(new Message(player, "Hey this is a simulation of me saying something again!"));
+		handler.handleMessage(new Message(player, "/perm Test"));
+		handler.handleMessage(new Message(player, "/perm 3"));
 		
 	}
 }

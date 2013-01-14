@@ -5,17 +5,15 @@ import org.sythe.suf.message.command.permission.IPermission;
 import org.sythe.suf.message.command.permission.IntegerPermission;
 
 /**
- * TODO: CURRENTLY BROKEN. Fix
- * 
  * @author Jacob A. Leach
  *
  */
-public class MyPlayer implements ISender
+public class Player implements ISender
 {
 	private String name;
 	private IntegerPermission permission;
 	
-	public MyPlayer(String name, int permission)
+	public Player(String name, int permission)
 	{
 		this.name = name;
 		this.permission = new IntegerPermission(permission);

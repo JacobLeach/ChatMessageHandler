@@ -13,6 +13,8 @@ import org.sythe.suf.message.command.permission.IPermission;
  * 
  * NOTE: This implementation allows for permissions to be changed but not parameters or requiredArguments.
  * 
+ * NOTE: This implementation ignores extra parameters and does not error if it is given too many.
+ * 
  * @author Jacob A. Leach
  * 
  */
@@ -23,16 +25,13 @@ public abstract class AbstractCommand implements ICommand
 	private final int requiredParameters;
 	private final IParameter[] parameters;
 
-	// TODO: Write a IntegerPermission Class to use here
-	public static final int DEFAULT_PERMISSION = 0;
 	public static final int DEFAULT_REQUIRED_ARGUMENTS = 0;
 	public static final int DEFAULT_TOTAL_ARGUMENTS = 0;
 
-	// public AbstractCommand()
-	// {
-	// // TODO: uncomment when I have written IntegerPermission class
-	// // this(DEFAULT_PERMISSION, DEFAULT_REQUIRED_ARGUMENTS, new IParameter[DEFAULT_TOTAL_ARGUMENTS]);
-	// }
+	public AbstractCommand(IPermission permission)
+	{
+		this(permission, DEFAULT_REQUIRED_ARGUMENTS, new IParameter[DEFAULT_TOTAL_ARGUMENTS]);
+	}
 
 	/**
 	 * @param permission
@@ -93,7 +92,7 @@ public abstract class AbstractCommand implements ICommand
 	 */
 	public String checkParameterTypes(String parameter, int position)
 	{
-		//TODO: Maybe add array index checking and add a custom error
+		// TODO: Maybe add array index checking and add a custom error
 		if (!(parameters[position].isValid(parameter)))
 		{
 			return parameters[position].getType();

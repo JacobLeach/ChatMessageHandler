@@ -3,19 +3,17 @@ package example;
 import org.sythe.suf.message.*;
 
 /**
- * TODO: CURRENTLY BROKEN. Fix
- * 
  * @author Jacob A. Leach
  *
  */
-public class MyMessage implements ITextMessage
+public class Message implements ITextMessage
 {
 	private String messageText;
-	private MyPlayer myPlayer;
+	private Player player;
 
-	public MyMessage(MyPlayer myPlayer, String messageText)
+	public Message(Player player, String messageText)
 	{
-		this.myPlayer = myPlayer;
+		this.player = player;
 		this.messageText = messageText;
 	}
 	
@@ -25,14 +23,14 @@ public class MyMessage implements ITextMessage
 		return messageText;
 	}
 
-	public MyPlayer getPlayer()
+	public Player getPlayer()
 	{
-		return myPlayer;
+		return player;
 	}
 	
 	@Override
 	public ISender getSender()
 	{
-		return myPlayer;
+		return player;
 	}
 }

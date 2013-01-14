@@ -4,25 +4,23 @@ import org.sythe.suf.message.*;
 import org.sythe.suf.message.command.CommandManager;
 
 /**
- * TODO: CURRENTLY BROKEN. Fix
- * 
  * @author Jacob A. Leach
  *
  */
-public class MyMessageHandler extends AbstractCommandMessageHandler
+public class MessageHandler extends AbstractMessageHandler
 {
-	public MyMessageHandler()
+	public MessageHandler()
 	{
 		super("/", new CommandManager());
-		getCommandManager().addCommand("mycommand", new MyCommand());
-		getCommandManager().addCommand("perm", new MyIntCommand());
+		getCommandManager().addCommand("mycommand", new Command());
+		getCommandManager().addCommand("perm", new IntCommand());
 	}
 	
 	public void onMessage(ITextMessage message)
 	{
-		if(message instanceof MyMessage)
+		if(message instanceof Message)
 		{
-			MyMessage temp = (MyMessage) message;
+			Message temp = (Message) message;
 			System.out.println(temp.getPlayer().getName() + ": " + temp.getMessageText());
 		}
 	}
