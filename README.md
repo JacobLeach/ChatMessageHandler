@@ -8,8 +8,13 @@ Some ready to use classes are included but the main focus of this project was to
 Some of the things I wish to accomplish are:
 
 1) Provide various useable implementations for all the abstract classes
+
 2) More documentation
+
 3) Full example (Perhaps a simple IRC bot)
+
 4) Automatic command loading (all your commands would go into a folder and they would be loaded automatically)
+
 5) More advanced permissions system
+
 6) Anything else I haven't thought of yet
