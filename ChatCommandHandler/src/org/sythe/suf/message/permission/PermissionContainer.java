@@ -45,8 +45,9 @@ public class PermissionContainer implements IContainsPermission
 		PermissionContainer example = new PermissionContainer();
 		
 		example.setPermission(null);
-		
+		//Prints null
 		System.out.println(example.getPermission());
+		//Throws NullPointerException
 		System.out.println(example.test());
 	}
 }
