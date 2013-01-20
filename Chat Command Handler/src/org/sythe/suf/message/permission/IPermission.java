@@ -1,4 +1,4 @@
-package org.sythe.suf.message.command.permission;
+package org.sythe.suf.message.permission;
 
 /**
  * @author Jacob A. Leach

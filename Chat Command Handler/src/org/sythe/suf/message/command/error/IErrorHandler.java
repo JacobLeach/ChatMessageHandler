@@ -1,7 +1,7 @@
 package org.sythe.suf.message.command.error;
 
 import org.sythe.suf.message.ISender;
-import org.sythe.suf.message.command.permission.IPermission;
+import org.sythe.suf.message.permission.IPermission;
 
 /**
  * TODO: Add a method for empty commands: IE ""

@@ -1,6 +1,6 @@
 package org.sythe.suf.message;
 
-import org.sythe.suf.message.command.permission.IPermission;
+import org.sythe.suf.message.permission.IPermission;
 
 /**
  * @author Jacob A. Leach

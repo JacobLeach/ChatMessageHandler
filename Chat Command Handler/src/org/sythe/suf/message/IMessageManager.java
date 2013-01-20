@@ -4,7 +4,7 @@ package org.sythe.suf.message;
  * @author Jacob A. Leach
  *
  */
-public interface IMessageHandler
+public interface IMessageManager
 {
 	/**
 	 * @param message

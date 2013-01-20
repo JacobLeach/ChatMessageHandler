@@ -7,8 +7,8 @@ import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.error.IErrorHandler;
 import org.sythe.suf.message.command.parameter.IParameter;
 import org.sythe.suf.message.command.parameter.IntegerParameter;
-import org.sythe.suf.message.command.permission.IPermission;
-import org.sythe.suf.message.command.permission.IntegerPermission;
+import org.sythe.suf.message.permission.IPermission;
+import org.sythe.suf.message.permission.IntegerPermission;
 
 public class CommandManagerTest
 {

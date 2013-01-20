@@ -7,11 +7,11 @@ import org.sythe.suf.message.command.CommandManager;
  * @author Jacob A. Leach
  *
  */
-public class MessageHandler extends AbstractMessageHandler
+public class MessageHandler extends AbstractMessageManager
 {
 	public MessageHandler()
 	{
-		super("/", new CommandManager());
+		super("/", new CommandManager(), null);
 		getCommandManager().addCommand("mycommand", new Command());
 		getCommandManager().addCommand("perm", new IntCommand());
 	}

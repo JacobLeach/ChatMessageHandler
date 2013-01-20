@@ -3,7 +3,7 @@ package example;
 import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.AbstractCommand;
 import org.sythe.suf.message.command.parameter.StringParameter;
-import org.sythe.suf.message.command.permission.IntegerPermission;
+import org.sythe.suf.message.permission.IntegerPermission;
 
 /**
  * @author Jacob A. Leach

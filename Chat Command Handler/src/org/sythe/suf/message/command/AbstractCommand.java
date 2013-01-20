@@ -3,7 +3,7 @@ package org.sythe.suf.message.command;
 import org.sythe.suf.message.ISender;
 import org.sythe.suf.message.command.error.IErrorHandler;
 import org.sythe.suf.message.command.parameter.IParameter;
-import org.sythe.suf.message.command.permission.IPermission;
+import org.sythe.suf.message.permission.IPermission;
 
 /**
  * NOTE: This class is "dumb". It does not do any checking of the permissions / parameters. It is assumed that this is
@@ -123,6 +123,10 @@ public abstract class AbstractCommand implements ICommand
 		return requiredParameters;
 	}
 
+	/* (non-Javadoc)
+	 * @see org.sythe.suf.message.command.ICommand#getPermission()
+	 */
+	@Override
 	public IPermission getPermission()
 	{
 		return (IPermission) permission.clone();
