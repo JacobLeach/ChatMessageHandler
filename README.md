@@ -1,4 +1,4 @@
-Chat-Command-Handler
+Chat Command Handler
 ====================
 
 A framework to handle chat commands such as "/someCommand" or "!command" for basically any chat program.
@@ -17,4 +17,8 @@ Some of the things I wish to accomplish are:
 
 5) More advanced permissions system
 
-6) Anything else I haven't thought of yet
+6) Implement Services and trasition from a CommandHandler to a full MessageHandler (IN PROGRESS)
+
+7) Implement Logging
+
+8) Anything else I haven't thought of yet
