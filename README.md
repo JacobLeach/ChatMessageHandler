@@ -19,4 +19,6 @@ Some of the things I wish to accomplish are:
 
 6) Implement Services and trasition from a CommandHandler to a full MessageHandler (IN PROGRESS)
 
-7) Anything else I haven't thought of yet
+7) Implement Logging
+
+8) Anything else I haven't thought of yet
