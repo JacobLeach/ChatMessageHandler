@@ -1,7 +1,7 @@
-Chat Command Handler
+Chat Message Handler
 ====================
 
-A framework to handle chat commands such as "/someCommand" or "!command" for basically any chat program.
+A framework to handle chat commands such as "/someCommand" or "!command", services for messages, and displaying messages for basically any chat program.
 
 Some ready to use classes are included but the main focus of this project was to design the framework in such a way so that it would be easy to swap out certain parts of the implmentations provided with custom ones. 
 
