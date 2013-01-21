@@ -1,4 +1,4 @@
-Chat-Command-Handler
+Chat Command Handler
 ====================
 
 A framework to handle chat commands such as "/someCommand" or "!command" for basically any chat program.
