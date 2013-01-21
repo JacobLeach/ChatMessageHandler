@@ -35,11 +35,14 @@ public class PermissionContainer implements IContainsPermission
 		return (permission == null) ? true : this.permission.compare(sender.getPermission());
 	}
 	
-	public IPermission test()
+	private IPermission test()
 	{
 		return (IPermission) permission.clone();
 	}
 	
+	/*
+	 * This is just here to illustrate the point that you need to check for null!
+	 */
 	public static void main(String[] args)
 	{
 		PermissionContainer example = new PermissionContainer();

@@ -15,13 +15,13 @@ public abstract class AbstractMessageManager implements IMessageManager
 	private boolean alwaysHandleMessage = false;
 
 	private ICommandManager commandManager;
-	private IServiceManager taskManager;
+	private IServiceManager serviceManager;
 
-	public AbstractMessageManager(String commandString, ICommandManager commandManager, IServiceManager taskManager)
+	public AbstractMessageManager(String commandString, ICommandManager commandManager, IServiceManager serviceManager)
 	{
 		this.commandString = commandString;
 		this.commandManager = commandManager;
-		this.taskManager = taskManager;
+		this.serviceManager = serviceManager;
 	}
 
 	/*
@@ -48,7 +48,7 @@ public abstract class AbstractMessageManager implements IMessageManager
 			onMessage(message);
 		}
 
-		runTasks(message);
+		runServices(message);
 	}
 
 	/*
@@ -70,9 +70,9 @@ public abstract class AbstractMessageManager implements IMessageManager
 	 * 
 	 * @return
 	 */
-	public IServiceManager getTaskManager()
+	public IServiceManager getServiceManager()
 	{
-		return taskManager;
+		return serviceManager;
 	}
 
 	/*
@@ -102,11 +102,11 @@ public abstract class AbstractMessageManager implements IMessageManager
 	 * @param manager
 	 * @return
 	 */
-	public boolean setTaskManager(IServiceManager manager)
+	public boolean setServiceManager(IServiceManager manager)
 	{
 		if (manager != null)
 		{
-			taskManager = manager;
+			serviceManager = manager;
 			return true;
 		}
 
@@ -152,9 +152,9 @@ public abstract class AbstractMessageManager implements IMessageManager
 		commandManager.handleCommand(message.getSender(), message.getMessageText().substring(commandString.length()));
 	}
 	
-	private final void runTasks(ITextMessage message)
+	private final void runServices(ITextMessage message)
 	{
-		taskManager.runTasks(message);
+		serviceManager.runTasks(message);
 	}
 
 	/*

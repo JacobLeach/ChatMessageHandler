@@ -2,7 +2,6 @@ package org.sythe.suf.message.service;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
 
 import org.sythe.suf.message.ITextMessage;
 

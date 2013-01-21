@@ -1,0 +1,10 @@
+Jacob: Hey this is a simulation of me saying something.
+Test: /mycommand Test
+Test: Hey this is a simulation of me saying something again!
+Test: /perm Test
+Test: /perm 3
+Jacob: Hey this is a simulation of me saying something.
+Test: /mycommand Test
+Test: Hey this is a simulation of me saying something again!
+Test: /perm Test
+Test: /perm 3

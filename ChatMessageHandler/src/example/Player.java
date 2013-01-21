@@ -1,7 +1,6 @@
 package example;
 
 import org.sythe.suf.message.ISender;
-import org.sythe.suf.message.permission.IPermission;
 import org.sythe.suf.message.permission.IntegerPermission;
 
 /**

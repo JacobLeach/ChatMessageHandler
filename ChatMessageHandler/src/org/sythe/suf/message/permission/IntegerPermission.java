@@ -1,8 +1,7 @@
 package org.sythe.suf.message.permission;
 
 /**
- * TODO: Implement this class such that integers are used as levels of permission. The higher, the more permission you
- * have.
+ * TODO: Write comment
  * 
  * @author Jacob A. Leach
  * 
